@@ -1,8 +1,25 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Home"></Label>
-</ActionBar>
+<ScrollView class="page">
+    <StackLayout>
+        <Label class="m-10 h1" text="NativeScript PDF" marginTop="20" color="#3A53FF" fontWeight="bold"></Label>
 
-<StackLayout class="page">
-    <Button text="Generate jspdf" (tap)="generateJspdf()"></Button>
-    <Button text="Generate pdfmake" (tap)="generatePdfmake()"></Button>
-</StackLayout>
+        <StackLayout class="home-menu">
+            <Label text="Name"></Label>
+            <TextField hint="Enter student name" [(ngModel)]="name" autocapitalizationType="allCharacters"
+                returnKeyType="done">
+            </TextField>
+        </StackLayout>
+        <StackLayout class="home-menu">
+            <Label text="Course Name"></Label>
+            <TextField hint="Select course name" [(ngModel)]="coursename" editable="false" textWrap="true" (tap)="selectCourse()">
+            </TextField>
+        </StackLayout>
+        <StackLayout class="home-menu">
+            <Label text="Choose pdf client"></Label>
+            <TextField hint="Select pdf library" [(ngModel)]="pdfclient" editable="false" (tap)="selectPdfClient()">
+            </TextField>
+        </StackLayout>
+
+        <Label class="m-10 h1" text="Generate Certificate" marginTop="30" class="gen-cert"
+            (tap)="generateCert()"></Label>
+    </StackLayout>
+</ScrollView>
