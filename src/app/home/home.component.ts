@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
     name;
     coursename;
     pdfclient;
+    isBusy: boolean = false;
 
     constructor(
         private page: Page,
@@ -55,6 +56,9 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
         this.page.actionBarHidden = true;
+        this.name = '';
+        this.coursename = '';
+        this.pdfclient = '';
         this.date = formatDate(new Date(), 'fullDate', 'en').split(",");
         this.date = this.date[1] + "," + this.date[2];
         this.getDatas();
@@ -104,6 +108,10 @@ export class HomeComponent implements OnInit {
     }
 
     generateCert(): void {
+        if(this.name == '' || this.coursename == '' || this.pdfclient == ''){
+            alert("Please enter all required fields!")
+            return;
+        }
         if (this.pdfclient == 'pdfMake') {
             this.generatepdfMake();
         }
@@ -119,6 +127,7 @@ export class HomeComponent implements OnInit {
     }
 
     generatepdfMake(): void {
+        this.isBusy = true;
 
         let that = this;
 
@@ -185,6 +194,7 @@ export class HomeComponent implements OnInit {
                 message: dataUrl,
                 okButtonText: "Copy to Clipboard"
             }).then(() => {
+                this.isBusy = false;
                 clipboard.setText(dataUrl);
                 this.clearFields();
             });
@@ -192,6 +202,7 @@ export class HomeComponent implements OnInit {
     }
 
     generatejsPDF(): void {
+        this.isBusy = true;
 
         var doc = new jsPDF({
             orientation: 'landscape',
@@ -225,7 +236,6 @@ export class HomeComponent implements OnInit {
         doc.setFontType("normal")
         doc.text(110, 175, 'On ' + this.date)
 
-
         doc.setFontSize(22)
         doc.setTextColor(29,161,242)
         doc.text(75, 190, 'NativeScripting')
@@ -247,6 +257,7 @@ export class HomeComponent implements OnInit {
                 message: dataUrl,
                 okButtonText: "Copy to Clipboard"
             }).then(() => {
+                this.isBusy = false;
                 clipboard.setText(dataUrl);
                 this.clearFields();
             });

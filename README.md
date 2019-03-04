@@ -4,7 +4,7 @@ Pdf generation in NativeScript using JavaScript libraries
 * pdfMake
 * jsPDF
 
-<b>Playground Link</b> - https://play.nativescript.org/?template=play-ng&id=tZ5F9Y
+<b>Playground Link</b> - https://play.nativescript.org/?template=play-ng&id=tZ5F9Y&v=2
 
 ![gif](https://github.com/kumarandena/nativescript-pdf-generation/blob/master/src/gif/nspdf.gif)
 

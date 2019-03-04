@@ -1,7 +1,6 @@
 <ScrollView class="page">
     <StackLayout>
         <Label class="m-10 h1" text="NativeScript PDF" marginTop="20" color="#3A53FF" fontWeight="bold"></Label>
-
         <StackLayout class="home-menu">
             <Label text="Name"></Label>
             <TextField hint="Enter student name" [(ngModel)]="name" autocapitalizationType="allCharacters"
@@ -10,7 +9,10 @@
         </StackLayout>
         <StackLayout class="home-menu">
             <Label text="Course Name"></Label>
-            <TextField hint="Select course name" [(ngModel)]="coursename" editable="false" textWrap="true" (tap)="selectCourse()">
+            <ActivityIndicator *ngIf="isBusy" [busy]="isBusy" color="#3A53FF" class="activity-indicator">
+            </ActivityIndicator>
+            <TextField hint="Select course name" [(ngModel)]="coursename" editable="false" textWrap="true"
+                (tap)="selectCourse()">
             </TextField>
         </StackLayout>
         <StackLayout class="home-menu">
